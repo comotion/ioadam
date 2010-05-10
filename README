@@ -1,0 +1,45 @@
+adam6066.pl - ADAM-6066 Remote IO 6-ch Digital Input and Power Relay
+
+This script allows you to control ADAM-6066 through the shell.
+
+Initial version: 2009-05-14
+Author: Kacper Wysocki <kwy@redpill-linpro.com>
+
+Usage:
+    The 6066 has 6 Digital Inputs and 6 switchable relays we call Digital
+    Outputs.
+
+    The ADAM communicates using an ASCII command set over port 1025/udp.
+
+    This program lets you get the state of all inputs and outputs, as well
+    as set, reset, toggle, force and time-delay with a simple command line.
+
+     $ adam6066.pl [options] [verbs]
+
+     OPTIONS:
+     --ip               : ADAM's IP address  (default: 10.121.20.30)
+     --port             : ADAM's UDP port    (default: 1025)
+     --version          : Show script version.
+     --help             : This message.
+     --debug            : Enable debug messages
+     --quiet            : Don't print header.
+
+     VERBS:
+       info             : Show module name, firmware, hex state, GCL flags.
+       state [channels] : Show I/O state.
+       get [channels]   : Show relay output channel state. 
+       getin            : Show digital input state.
+       force [channels] : Set (turn ON) only these, turn OFF other channels.
+       set [channels]   : Set (turn ON) digital inputs, one by one.
+       reset [channels] : Reset (turn OFF) digital inputs, one by one.
+       toggle [channels]: Turn channel off if is on, turn on if is off.
+       wait  [ms]       : Sleep and do nothing for x milliseconds.
+       reconnect [ip port]:Re-initiate communications with ADAM.
+       ip  [ip]         : set the IP for new connections.
+       port [port]      : set port for new connections.
+       ver(sion)        : print program version
+       help             : This message.
+       examples         : MORE HELP and EXAMPLES ($ perldoc adam6066.pl)
+
+    All verbs are case-insensitive.
+
